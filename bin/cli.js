@@ -21,9 +21,10 @@
 			c: 'compress',
 			w: 'watch',
 			r: 'relative',
-			s: 'sourceOverwrite'
+			s: 'sourceOverwrite',
+			i: 'sassIncludePaths'
 		},
-		string: ['outDir', 'base'],
+		string: ['outDir', 'base', 'sassIncludePaths'],
 		boolean: ['flatten', 'compress', 'watch', 'relative', 'sourceOverwrite', 'silent'],
 		number: ['up']
 	});
@@ -57,7 +58,8 @@
 						inliner(content.toString(), {
 							base: args.base,
 							compress: args.compress,
-							relative: args.relative
+							relative: args.relative,
+							includePaths: args.sassIncludePaths
 						}, path.dirname(target)).then((r) => {
 							if (args.flatten) {
 								file = flattener(file);
